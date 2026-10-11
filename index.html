@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 4 Islamic Studies: The Qur'an (Chapter 7) Interactive Quiz</title>
+  
+  <!-- Google Fonts for Child-Friendly, Elegant & Arabic Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Quiz Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Canvas for Confetti Fireworks on Victory -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Background Decorative Watermark Pattern -->
+  <div class="bg-pattern" aria-hidden="true"></div>
+
+  <div class="app-container">
+    <!-- Header Banner -->
+    <header class="main-header">
+      <!-- Decorative Lantern SVGs -->
+      <svg class="header-decor-lantern-left" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="30" y1="0" x2="30" y2="25" stroke="#fbbf24" stroke-width="2.5" />
+        <path d="M22 25 H38 L44 42 H16 Z" fill="#d97706" />
+        <path d="M16 42 H44 L39 75 H21 Z" fill="#f59e0b" fill-opacity="0.9" />
+        <circle cx="30" cy="58" r="8" fill="#fef08a" />
+        <path d="M21 75 H39 L30 92 Z" fill="#b45309" />
+        <circle cx="30" cy="94" r="2.5" fill="#fcd34d" />
+      </svg>
+      
+      <svg class="header-decor-lantern-right" viewBox="0 0 60 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="30" y1="0" x2="30" y2="25" stroke="#fbbf24" stroke-width="2.5" />
+        <path d="M22 25 H38 L44 42 H16 Z" fill="#d97706" />
+        <path d="M16 42 H44 L39 75 H21 Z" fill="#f59e0b" fill-opacity="0.9" />
+        <circle cx="30" cy="58" r="8" fill="#fef08a" />
+        <path d="M21 75 H39 L30 92 Z" fill="#b45309" />
+        <circle cx="30" cy="94" r="2.5" fill="#fcd34d" />
+      </svg>
+
+      <!-- Audio Mute/Unmute Control -->
+      <div class="header-controls">
+        <button id="btn-toggle-sound" class="btn-icon" title="Toggle Sound Effects" aria-label="Toggle Sound Effects">
+          🔊
+        </button>
+      </div>
+
+      <div class="header-content">
+        <div class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <div class="header-badge">
+          <span>🕌 Grade 4 Islamic Studies</span>
+          <span>•</span>
+          <span>Chapter 7</span>
+        </div>
+        <h1 class="main-title">
+          <span>The Qur'an</span>
+          <span class="arabic-sub">اَلْقُرْآن</span>
+        </h1>
+        <p class="header-sub">Interactive Chapter Quiz & Learning Challenge (Pages 27 - 31)</p>
+      </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- VIEW 1: WELCOME SCREEN                     -->
+    <!-- ========================================== -->
+    <section id="view-welcome" class="quiz-view active">
+      <div class="quiz-card welcome-hero">
+        <div class="welcome-arch-icon">📖</div>
+        <h2 class="welcome-title">Assalamu Alaikum, Young Scholar!</h2>
+        <p class="welcome-desc">
+          Test your knowledge on <strong>Chapter 7: The Qur'an</strong>! Answer questions, type one-word facts, and complete exciting drag-and-drop matching challenges.
+        </p>
+
+        <!-- Student Setup -->
+        <div class="student-entry-box">
+          <label for="input-student-name" class="form-label">✨ Enter Your Name:</label>
+          <input type="text" id="input-student-name" class="student-name-input" placeholder="e.g. Zaid, Amina, Bilal..." maxlength="30" autocomplete="off" />
+
+          <div class="avatar-selector">
+            <span class="form-label">🌟 Choose Your Avatar Badge:</span>
+            <div class="avatar-grid" id="avatar-grid">
+              <button type="button" class="avatar-option selected" data-avatar="🌙" title="Crescent Moon">🌙</button>
+              <button type="button" class="avatar-option" data-avatar="⭐" title="Radiant Star">⭐</button>
+              <button type="button" class="avatar-option" data-avatar="🏮" title="Lantern">🏮</button>
+              <button type="button" class="avatar-option" data-avatar="🕌" title="Mosque">🕌</button>
+              <button type="button" class="avatar-option" data-avatar="📖" title="Holy Book">📖</button>
+              <button type="button" class="avatar-option" data-avatar="🕊️" title="Dove">🕊️</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Specs -->
+        <div class="quiz-specs-grid">
+          <div class="spec-badge">
+            <div class="spec-icon">📝</div>
+            <div class="spec-val">Section A</div>
+            <div class="spec-label">Short Answers (8 Marks)</div>
+          </div>
+          <div class="spec-badge">
+            <div class="spec-icon">⚡</div>
+            <div class="spec-val">Section B</div>
+            <div class="spec-label">One-Word Facts (8 Marks)</div>
+          </div>
+          <div class="spec-badge">
+            <div class="spec-icon">🎯</div>
+            <div class="spec-val">Section C</div>
+            <div class="spec-label">Drag & Match (12 Marks)</div>
+          </div>
+          <div class="spec-badge">
+            <div class="spec-icon">🏆</div>
+            <div class="spec-val">28 Marks</div>
+            <div class="spec-label">Total Score Available</div>
+          </div>
+        </div>
+
+        <button id="btn-start-quiz" class="btn-primary" type="button">
+          <span>Bismillah! Start Quiz</span>
+          <span>➜</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 2: QUIZ ACTIVE VIEW                   -->
+    <!-- ========================================== -->
+    <section id="view-quiz" class="quiz-view">
+      <!-- Sticky/Top Navigation Bar -->
+      <div class="quiz-top-bar">
+        <div class="top-bar-stats">
+          <div class="student-tag">
+            <span class="student-avatar-badge" id="hud-avatar">🌙</span>
+            <span id="hud-student-name">Student</span>
+          </div>
+
+          <div class="section-pill-container">
+            <button type="button" class="section-pill active" id="tab-sec-a" onclick="switchSection('section-a')">
+              Sec A: Short Answers
+            </button>
+            <button type="button" class="section-pill" id="tab-sec-b" onclick="switchSection('section-b')">
+              Sec B: One-Word
+            </button>
+            <button type="button" class="section-pill" id="tab-sec-c" onclick="switchSection('section-c')">
+              Sec C: Drag & Match
+            </button>
+          </div>
+
+          <div class="score-live-badge">
+            <span>⭐ Score:</span>
+            <span id="hud-score">0</span>
+            <span>/ 28</span>
+          </div>
+        </div>
+
+        <!-- Overall Progress Track -->
+        <div class="progress-track" title="Overall Progress">
+          <div class="progress-fill" id="hud-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- SECTION A CONTAINER -->
+      <div id="section-a-container" class="section-wrapper">
+        <div class="section-banner">
+          <div class="section-tagline">
+            <h2><span>Section A:</span> Answer the Following Questions</h2>
+            <div class="section-arabic">أَجِبْ عَنِ الْأَسْئِلَةِ الآتِيَةِ</div>
+          </div>
+          <p>Read each question carefully and type your answer in the box. When ready, click "Submit Answer" to get instant marks and feedback.</p>
+        </div>
+
+        <!-- Question Cards will be dynamically injected or structured -->
+        <div id="section-a-questions"></div>
+      </div>
+
+      <!-- SECTION B CONTAINER -->
+      <div id="section-b-container" class="section-wrapper" style="display: none;">
+        <div class="section-banner">
+          <div class="section-tagline">
+            <h2><span>Section B:</span> One-Word Answers</h2>
+            <div class="section-arabic">أَجِبْ بِكَلِمَةٍ وَاحِدَةٍ</div>
+          </div>
+          <p>Type a single word or short phrase for each fact from Chapter 7. If you get stuck, click the lightbulb for a gentle hint!</p>
+        </div>
+
+        <div id="section-b-questions"></div>
+      </div>
+
+      <!-- SECTION C CONTAINER -->
+      <div id="section-c-container" class="section-wrapper" style="display: none;">
+        <div class="section-banner">
+          <div class="section-tagline">
+            <h2><span>Section C:</span> Drag-and-Drop & Tap Matching Challenge</h2>
+            <div class="section-arabic">تَحَدِّي التَّطَابُقِ وَالسَّحْبِ</div>
+          </div>
+          <p>
+            <strong>How to play:</strong> Drag the golden cards into the matching boxes. On touchscreens, simply <em>tap an item</em> then <em>tap its matching box</em>!
+          </p>
+        </div>
+
+        <div id="section-c-activities"></div>
+      </div>
+
+      <!-- Navigation Footer -->
+      <div class="quiz-nav-footer">
+        <button type="button" id="btn-prev-section" class="btn-secondary" onclick="navigateSection(-1)">
+          <span>⬅ Previous Section</span>
+        </button>
+
+        <button type="button" id="btn-next-section" class="btn-primary" onclick="navigateSection(1)">
+          <span>Next Section ➜</span>
+        </button>
+
+        <button type="button" id="btn-finish-quiz" class="btn-primary" style="background: linear-gradient(135deg, var(--primary-emerald), #09402c); display: none;" onclick="showFinalResults()">
+          <span>🏁 Finish Quiz & View Results</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- VIEW 3: FINAL RESULTS SCREEN               -->
+    <!-- ========================================== -->
+    <section id="view-results" class="quiz-view">
+      <div class="results-card">
+        <div class="results-celebration-banner">
+          <div class="stars-rating-container" id="results-stars">
+            <span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+            <span class="star-icon">⭐</span>
+          </div>
+
+          <div class="results-greeting" id="results-greeting">مَا شَاءَ اللَّه</div>
+          <h2 class="welcome-title" id="results-name-title">Congratulations, Student!</h2>
+          <div class="results-score-big" id="results-score-display">0 / 28</div>
+          <div class="results-percentage" id="results-percentage-display">(0%)</div>
+        </div>
+
+        <div class="results-verdict-box" id="results-verdict-box">
+          <div class="results-verdict-title" id="verdict-title">Excellent Effort!</div>
+          <p class="results-verdict-desc" id="verdict-desc">Keep learning the blessed teachings of the Qur'an.</p>
+        </div>
+
+        <!-- Section Breakdown -->
+        <div class="breakdown-grid">
+          <div class="breakdown-card">
+            <h4>Section A (Short Answers)</h4>
+            <div class="b-score" id="breakdown-score-a">0 / 8</div>
+            <div class="spec-label">3 Questions</div>
+          </div>
+          <div class="breakdown-card">
+            <h4>Section B (One-Word)</h4>
+            <div class="b-score" id="breakdown-score-b">0 / 8</div>
+            <div class="spec-label">8 Questions</div>
+          </div>
+          <div class="breakdown-card">
+            <h4>Section C (Drag & Match)</h4>
+            <div class="b-score" id="breakdown-score-c">0 / 12</div>
+            <div class="spec-label">3 Interactive Challenges</div>
+          </div>
+        </div>
+
+        <!-- Dynamic Revision Topics Recommendations -->
+        <div class="revision-topics-box" id="revision-box" style="display: none;">
+          <h3><span>📖</span> Key Chapter Points to Revise:</h3>
+          <ul class="revision-list" id="revision-list">
+            <!-- Dynamically populated if student lost points -->
+          </ul>
+        </div>
+
+        <!-- Results Actions -->
+        <div class="results-actions">
+          <button type="button" class="btn-primary" onclick="openReviewModal()">
+            <span>📋 Review All Answers</span>
+          </button>
+
+          <button type="button" class="btn-secondary" onclick="openTeacherModal()">
+            <span>🔒 Teacher Answer Key</span>
+          </button>
+
+          <button type="button" class="btn-secondary" onclick="window.print()">
+            <span>🖨️ Print Certificate</span>
+          </button>
+
+          <button type="button" class="btn-secondary" onclick="restartQuiz()">
+            <span>🔄 Restart Quiz</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: Detailed Answer Review              -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="modal-review">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3><span>📋</span> Quiz Answers & Textbook Model Answers</h3>
+        <button type="button" class="btn-close-modal" onclick="closeReviewModal()">✕</button>
+      </div>
+      <div class="modal-body" id="review-modal-content">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: Teacher Marking Scheme & Answer Key -->
+  <!-- ========================================== -->
+  <div class="modal-overlay" id="modal-teacher">
+    <div class="modal-window">
+      <div class="modal-header">
+        <h3><span>🔒</span> Teacher's Guide & Marking Scheme</h3>
+        <button type="button" class="btn-close-modal" onclick="closeTeacherModal()">✕</button>
+      </div>
+      <div class="modal-body" id="teacher-modal-content">
+        <!-- Injected dynamically from quiz-data.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="quiz-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
